@@ -1,16 +1,17 @@
-specVersion: 0.0.1
+specVersion: 0.0.4
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: NFT
+    name: NFT1
     network: bsc
     source:
-      address: "0xDB44357C57c3f9698cc035c9DD3995b27bD85113"
+      address: "0x52f3787922FbB27A0087e4C70029bFa32C75fE9E"
+      startBlock: 18439479
       abi: NFT
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.6
       language: wasm/assemblyscript
       entities:
         - Approval
@@ -45,3 +46,92 @@ dataSources:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
       file: ./src/nft.ts
+  - kind: ethereum
+    name: NFT2
+    network: bsc
+    source:
+      address: "0xD84432A9FAbc04643fEB1116BEf874D0C6385b74"
+      startBlock: 18442018
+      abi: NFT
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - OwnershipTransferred
+        - SetClaimWhitelistEvent
+        - SetCostEvent
+        - SetPausedEvent
+        - SetUriMerklerootEvent
+        - SetUriPrefixEvent
+        - Transfer
+      abis:
+        - name: NFT
+          file: ./abis/NFT.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SetClaimWhitelistEvent(address,uint256)
+          handler: handleSetClaimWhitelistEvent
+        - event: SetCostEvent(uint256)
+          handler: handleSetCostEvent
+        - event: SetPausedEvent(bool)
+          handler: handleSetPausedEvent
+        - event: SetUriMerklerootEvent(bytes32)
+          handler: handleSetUriMerklerootEvent
+        - event: SetUriPrefixEvent(string)
+          handler: handleSetUriPrefixEvent
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/nft.ts
+  - kind: ethereum
+    name: NFT3
+    network: bsc
+    source:
+      address: "0xDB44357C57c3f9698cc035c9DD3995b27bD85113"
+      startBlock: 19306685
+      abi: NFT
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - OwnershipTransferred
+        - SetClaimWhitelistEvent
+        - SetCostEvent
+        - SetPausedEvent
+        - SetUriMerklerootEvent
+        - SetUriPrefixEvent
+        - Transfer
+      abis:
+        - name: NFT
+          file: ./abis/NFT.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: SetClaimWhitelistEvent(address,uint256)
+          handler: handleSetClaimWhitelistEvent
+        - event: SetCostEvent(uint256)
+          handler: handleSetCostEvent
+        - event: SetPausedEvent(bool)
+          handler: handleSetPausedEvent
+        - event: SetUriMerklerootEvent(bytes32)
+          handler: handleSetUriMerklerootEvent
+        - event: SetUriPrefixEvent(string)
+          handler: handleSetUriPrefixEvent
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/nft.ts
+            
